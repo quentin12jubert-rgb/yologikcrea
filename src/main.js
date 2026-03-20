@@ -297,7 +297,7 @@ let threeApp = null;
 
 function initHeroGL() {
   const wrap = document.getElementById('hero-canvas-wrap');
-  if (!wrap || threeApp) return;
+  if (!wrap || threeApp || window.skipThreeRender) return;
   if (typeof THREE === 'undefined') return;
 
   const renderer = new THREE.WebGLRenderer({antialias:true,alpha:false});
