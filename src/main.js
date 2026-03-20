@@ -73,6 +73,7 @@ const PROJECTS = [
     loc: "WRC",
     year: "2025",
     svc: "Photomontage & Retouche",
+    tools: "Photoshop, Camera Raw",
     desc: "Affiche fan-made dédiée à Takamoto Katsuta, réalisée sur Photoshop sans IA. Montage complet : détourage, color grading, intégration de la voiture dans un décor montagneux, travail sur la poussière et les lueurs pour un rendu ciné façon affiche officielle WRC.",
     tags: ["WRC", "Toyota", "Rally", "Dust"],
     thumb: "/images/RALLYE/Takamoto_1.jpg",
@@ -251,6 +252,20 @@ const PROJECTS = [
     tags: ["YouTube", "Thumbnail", "Concept"],
     thumb: "/images/miniature/Miniature%201.jpg", 
     gallery: ["/images/miniature/Miniature%201.jpg"]
+  },
+  {
+    id: 14,
+    title: "Aston Martin V12",
+    cat: "Automobile",
+    client: "Projet Personnel",
+    loc: "Paris, FR",
+    year: "2025",
+    svc: "Photomontage Premium",
+    tools: "Photoshop, Lightroom",
+    desc: "Intégration d'une Aston Martin dans un décor urbain nocturne avec gestion avancée des reflets et de l'éclairage.",
+    tags: ["Aston Martin", "Night", "Urban", "Retouche"],
+    thumb: "/images/499P/499P_1.jpg", 
+    gallery: ["/images/499P/499P_1.jpg"]
   },
 ];
 const SKILLS=[{name:"Photoshop / Retouche",pct:98},{name:"Illustrator / Vecteur",pct:92},{name:"Direction Artistique",pct:90},{name:"After Effects / Motion",pct:78},{name:"Figma / UI Design",pct:72}];
@@ -653,10 +668,12 @@ function renderProject(id){
   }
   document.getElementById('proj-desc').textContent=p.desc;
   
-  document.getElementById('proj-meta').innerHTML = [
+  let metaItems = [
     {k:'Services',v:p.svc}, {k:'Client',v:p.client},
     {k:'Location',v:p.loc}, {k:'Année',v:p.year}
-  ].map(m => `<div><div class="mk">${m.k}</div><div class="mv">${m.v}</div></div>`).join('');
+  ];
+  if(p.tools) metaItems.push({k:'Outils',v:p.tools});
+  document.getElementById('proj-meta').innerHTML = metaItems.map(m => `<div><div class="mk">${m.k}</div><div class="mv">${m.v}</div></div>`).join('');
   
   // 1. On prépare le média principal (Vidéo ou Image)
   let mainMediaHtml = '';
