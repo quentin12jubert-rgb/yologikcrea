@@ -100,6 +100,12 @@ button{font-family:'DM Mono',monospace;cursor:none}
   background: var(--coral2);
 }
 
+@media (max-width: 768px) {
+  #preloader .skip-btn {
+    display: none;
+  }
+}
+
 /* ══════════════════════════════════════════════════
    CUSTOM CURSOR
 ══════════════════════════════════════════════════ */
