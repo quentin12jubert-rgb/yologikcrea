@@ -570,10 +570,8 @@ function renderGal(cat){
 
   setTimeout(() => {
     currentItems=cat==='Tout'?PROJECTS:PROJECTS.filter(p => {
-      // Permet de séparer "Automobile & Vidéo" en deux mots clés pour filtrer les deux en même temps
-      const filterCats = cat.split(/&|\//).map(c => c.trim());
-      const projCats = Array.isArray(p.cat) ? p.cat : [p.cat];
-      return filterCats.some(fc => projCats.includes(fc));
+      if (Array.isArray(p.cat)) return p.cat.includes(cat);
+      return p.cat === cat;
     });
     document.getElementById('gal-count').textContent=currentItems.length+' projet'+(currentItems.length>1?'s':'');
     grid.innerHTML='';
